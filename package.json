@@ -1,0 +1,25 @@
+{
+  "name": "templaterepo",
+  "version": "1.0.0",
+  "description": "template",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DuraSky/TemplateRepo.git"
+  },
+  "author": "DuraSky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DuraSky/TemplateRepo/issues"
+  },
+  "homepage": "https://github.com/DuraSky/TemplateRepo#readme",
+  "devDependencies": {
+    "css-loader": "^6.9.0",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
