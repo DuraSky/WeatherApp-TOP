@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/DuraSky/TemplateRepo#readme",
   "devDependencies": {
-    "css-loader": "^6.9.0",
+    "css-loader": "^6.9.1",
     "style-loader": "^3.3.4",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
