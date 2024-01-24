@@ -1,16 +1,22 @@
 import { switchMetric } from "./switchMetric";
+import locationImg from "./location.svg"
 
 export function displayWeather(weather){
     const content = document.getElementById("content");
-    content.innerHTML = ""
+    const switchBtnDiv = document.getElementById("switchBtnDiv");
+    content.innerHTML = "";
+    switchBtnDiv.innerHTML = "";
 
     const mainInfo = document.createElement("div");
     mainInfo.setAttribute("id", "mainInfo");
 
     console.log("lenght")
-    console.log(content.children.length)    
+    console.log(content.children.length)  
     console.log("Inside display");
     console.log(weather);
+
+    const stylingDiv = document.createElement("div");
+    stylingDiv.setAttribute("id", "stylingDiv");
 
     //Location Info
     let town = weather.location.name;
@@ -33,10 +39,18 @@ export function displayWeather(weather){
     let localTimePara = document.createElement("p");
     localTimePara.innerHTML = `Local time: `+localTime;
 
+    let locationH1 = document.createElement("h1");
+    locationH1.innerHTML = town;
+
+    const locationIcon = new Image();
+    locationIcon.setAttribute("width", "40px");
+    locationIcon.src = locationImg;
+
     locationDiv.appendChild(townPara);
     locationDiv.appendChild(regionPara);
     locationDiv.appendChild(countryPara);
     locationDiv.appendChild(localTimePara);
+    locationDiv.appendChild(locationIcon);
 
     //weather Info
     let condition = weather.current.condition.text;
@@ -53,7 +67,7 @@ export function displayWeather(weather){
     tempPara.innerHTML = `Celsius: ` + tempC;
 
     let feelsLikePara = document.createElement("p");
-    feelsLikePara.innerHTML = `Feels like :` + feelsLikeC;
+    feelsLikePara.innerHTML = `Feels like :` + feelsLikeC + ` °C`;
 
     let conditionPara = document.createElement("p");
     conditionPara.innerHTML = condition;
@@ -78,7 +92,7 @@ export function displayWeather(weather){
     let day1Icon = "http:" + weather.forecast.forecastday[1].day.condition.icon;
 
     let day1Div = document.createElement("div");
-    day1Div.setAttribute("class", "day 1");
+    day1Div.setAttribute("class", "day one");
 
     let day1DatePara = document.createElement("p");
     day1DatePara.innerHTML = day1Date;
@@ -90,7 +104,7 @@ export function displayWeather(weather){
     day1IconImg.src = day1Icon;
 
     let day1TempPara = document.createElement("p");
-    day1TempPara.innerHTML = day1Temp + " C";
+    day1TempPara.innerHTML = day1Temp + " °C";
 
         //day2
     let day2Date = weather.forecast.forecastday[2].date;
@@ -98,9 +112,8 @@ export function displayWeather(weather){
     let day2Temp = weather.forecast.forecastday[2].day.avgtemp_c;
     let day2Icon = "http:" + weather.forecast.forecastday[2].day.condition.icon;
 
-
     let day2Div = document.createElement("div");
-    day2Div.setAttribute("class", "day 2");
+    day2Div.setAttribute("class", "day two");
 
     let day2DatePara = document.createElement("p");
     day2DatePara.innerHTML = day2Date;
@@ -112,7 +125,7 @@ export function displayWeather(weather){
     day2IconImg.src = day2Icon;
 
     let day2TempPara = document.createElement("p");
-    day2TempPara.innerHTML = day2Temp + " C";
+    day2TempPara.innerHTML = day2Temp + " °C";
 
         //day3
     let day3Date = weather.forecast.forecastday[3].date;
@@ -120,9 +133,8 @@ export function displayWeather(weather){
     let day3Temp = weather.forecast.forecastday[3].day.avgtemp_c;
     let day3Icon = "http:" + weather.forecast.forecastday[3].day.condition.icon;
 
-
     let day3Div = document.createElement("div");
-    day3Div.setAttribute("class", "day 3");
+    day3Div.setAttribute("class", "day three");
 
     let day3DatePara = document.createElement("p");
     day3DatePara.innerHTML = day3Date;
@@ -134,7 +146,7 @@ export function displayWeather(weather){
     day3IconImg.src = day3Icon;
 
     let day3TempPara = document.createElement("p");
-    day3TempPara.innerHTML = day3Temp + " C";
+    day3TempPara.innerHTML = day3Temp + " °C";
 
     weatherInfoDiv.appendChild(conditionPara);
     weatherInfoDiv.appendChild(iconImg)
@@ -162,8 +174,12 @@ export function displayWeather(weather){
     forecastDiv.appendChild(day2Div);
     forecastDiv.appendChild(day3Div);
 
-    mainInfo.appendChild(locationDiv);
-    mainInfo.appendChild(weatherInfoDiv);
+    // mainInfo.appendChild(locationDiv);
+    // mainInfo.appendChild(weatherInfoDiv);
+    stylingDiv.appendChild(locationDiv);
+    stylingDiv.appendChild(locationH1)
+    stylingDiv.appendChild(weatherInfoDiv);
+    mainInfo.appendChild(stylingDiv);
     mainInfo.appendChild(forecastDiv);
     content.appendChild(mainInfo);
 

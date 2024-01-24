@@ -7,7 +7,7 @@ const searchBtn = document.getElementById("search");
 
 searchBtn.addEventListener("click", async()=>{
     let getTown = townValue.value;
-    getTown = "Bohumin"; ///testing, remove once done
+    //getTown = "Bohumin"; ///testing, remove once done
     let weatherData = await getWeather(getTown);
     townValue.value = "";
     displayWeather(weatherData);

@@ -1,10 +1,11 @@
 export function switchMetric(weather, tempPara,feelsLikePara,windPara,day1TempPara,day2TempPara,day3TempPara){
-    const content = document.getElementById("content");
+    const switchBtnDiv = document.getElementById("switchBtnDiv");
     let switched = false;
 
     const switchButton = document.createElement("button");
     switchButton.setAttribute("id", "switch");
-    switchButton.innerHTML = "Switch Metrics";
+    //switchButton.innerHTML = "Switch Metrics";
+    switchButton.innerHTML = `<img src="./temp.svg" alt="search" width="30px">°C/°F</img>`;
 
     switchButton.addEventListener("click", ()=>{
         let tempC = weather.current.temp_c;
@@ -21,22 +22,22 @@ export function switchMetric(weather, tempPara,feelsLikePara,windPara,day1TempPa
         let day3TempF = weather.forecast.forecastday[3].day.avgtemp_f;
 
         if(switched === false){
-            tempPara.innerHTML = "Farenhait: " + tempF;
-            feelsLikePara.innerHTML = "Feels like: "  + feelsLikeF;
+            tempPara.innerHTML = "Fahrenheit: " + tempF;
+            feelsLikePara.innerHTML = "Feels like: "  + feelsLikeF + ` °F`;
             windPara.innerHTML = "Wind speed Km: " + windMp;
-            day1TempPara.innerHTML = day1TempF + " F";
-            day2TempPara.innerHTML = day2TempF + " F";
-            day3TempPara.innerHTML = day3TempF + " F";
+            day1TempPara.innerHTML = day1TempF + " °F";
+            day2TempPara.innerHTML = day2TempF + " °F";
+            day3TempPara.innerHTML = day3TempF + " °F";
             switched = true;
         }else if(switched === true){
             tempPara.innerHTML = "Celsius: " + tempC;
-            feelsLikePara.innerHTML = "Feels like: "  + feelsLikeC;
+            feelsLikePara.innerHTML = "Feels like: "  + feelsLikeC + ` °C`;
             windPara.innerHTML = "Wind speed Km: " + windKm;
-            day1TempPara.innerHTML = day1TempC + " C";
-            day2TempPara.innerHTML = day2TempC + " C";
-            day3TempPara.innerHTML = day3TempC + " C";
+            day1TempPara.innerHTML = day1TempC + " °C";
+            day2TempPara.innerHTML = day2TempC + " °C";
+            day3TempPara.innerHTML = day3TempC + " °C";
             switched = false;
         }
     })
-    content.appendChild(switchButton)
+    switchBtnDiv.appendChild(switchButton)
 }
